@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UsaidiziHub</string>
+    <string name="splash_main_text">Your Counselor is now one click away!</string>
+    <string name="splash_support_text">Most counselors are totally free!</string>
+    <string name="app_version">App Version: 1.0 beta</string>
+    <string name="razor_studios">RAZOR STUDIOS</string>
+    <string name="continue_with_google">CONTINUE WITH GOOGLE</string>
+    <string name="use_email_and_password">Use Email and Password</string>
+</resources>
