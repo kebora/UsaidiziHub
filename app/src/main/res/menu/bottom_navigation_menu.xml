@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_navigation_home"
+        android:icon="@drawable/baseline_home"
+        android:title="@string/all" />
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/baseline_search"
+        android:title="@string/search"/>
+    <item
+        android:id="@+id/menu_sessions"
+        android:icon="@drawable/baseline_supervised_user_circle"
+        android:title="@string/my_sessions"/>
+</menu>

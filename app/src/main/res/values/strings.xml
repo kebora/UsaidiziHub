@@ -6,4 +6,11 @@
     <string name="razor_studios">RAZOR STUDIOS</string>
     <string name="continue_with_google">CONTINUE WITH GOOGLE</string>
     <string name="use_email_and_password">Use Email and Password</string>
+    <string name="search">Search</string>
+    <string name="all">All</string>
+    <string name="my_sessions">My Sessions</string>
+    <string name="welcome_back">WELCOME BACK,</string>
+    <string name="username">DANIEL</string>
+    <string name="tagline_text">Do you just need someone to talk to? Check out our Community Counselors!</string>
+    <string name="counselor_name">Daniel Kebora</string>
 </resources>
