@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         removeActionBar();
+
+        HorizontalScrollView horizontalScrollView = findViewById(R.id.horizontal_counselors_row);
+        horizontalScrollView.setHorizontalScrollBarEnabled(false);
 
         BottomNavigationView buttonNavigationView = findViewById(R.id.bottom_nav);
         buttonNavigationView.setOnItemSelectedListener(item -> {

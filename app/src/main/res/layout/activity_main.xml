@@ -41,7 +41,6 @@
         android:text="@string/tagline_text"
         android:fontFamily="monospace"
         android:layout_below="@id/divider"
-        android:textSize="15sp"
         android:padding="8dp"
         android:textStyle="bold"
         android:layout_height="wrap_content"/>
@@ -49,6 +48,7 @@
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:layout_below="@id/textview_tagline"
         android:id="@+id/horizontal_counselors_row"
 
@@ -63,6 +63,12 @@
             android:layout_width="200dp"
             android:layout_marginEnd="10dp"
             android:layout_height="200dp">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:background="@drawable/image"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
