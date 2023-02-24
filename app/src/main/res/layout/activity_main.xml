@@ -168,7 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/divider"
         android:fontFamily="serif-monospace"
-        android:text="Old is Gold"
+        android:text="IT Experts"
         android:textSize="25sp"
         android:textStyle="bold" />
 
