@@ -86,8 +86,8 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
                         android:src="@drawable/baseline_verified_24" />
-
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"

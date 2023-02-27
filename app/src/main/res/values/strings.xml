@@ -13,4 +13,6 @@
     <string name="username">DANIEL</string>
     <string name="tagline_text">Do you just need someone to talk to? Check out our Community Counselors!</string>
     <string name="counselor_name">Daniel Kebora</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
