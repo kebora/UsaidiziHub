@@ -3,6 +3,8 @@ package com.simiyu.usaidizihub;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         removeActionBar();
 
-        HorizontalScrollView horizontalScrollView = findViewById(R.id.horizontal_counselors_row);
-        horizontalScrollView.setHorizontalScrollBarEnabled(false);
+        loadFragments(new RowFragment());
+
+//        HorizontalScrollView horizontalScrollView = findViewById(R.id.horizontal_counselors_row);
+//        horizontalScrollView.setHorizontalScrollBarEnabled(false);
 
         BottomNavigationView buttonNavigationView = findViewById(R.id.bottom_nav);
         buttonNavigationView.setOnItemSelectedListener(item -> {
@@ -43,5 +47,12 @@ public class MainActivity extends AppCompatActivity {
         if (actionBar!=null){
             actionBar.hide();
         }
+    }
+
+    //this is a method to load the fragments
+    void loadFragments(Fragment fragment){
+        RowFragment rowFragment = new RowFragment();
+        FragmentTransaction fragmentTransaction = rowFragment.getParentFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.row_frame_layout,fragment);
     }
 }
