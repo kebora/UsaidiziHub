@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
         //Add the row fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment_row_placeholder,RowFragment.class,null)
+                .replace(R.id.fragment_row_placeholder, RowFragment.class, null)
                 .commit();
 
         BottomNavigationView buttonNavigationView = findViewById(R.id.bottom_nav);
         buttonNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.menu_navigation_home:
                 case R.id.menu_search:
                 case R.id.menu_sessions:
@@ -42,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
     }
-    void removeActionBar(){
+
+    void removeActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null){
+        if (actionBar != null) {
             actionBar.hide();
         }
     }
