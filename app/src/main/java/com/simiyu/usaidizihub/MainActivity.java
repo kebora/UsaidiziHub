@@ -3,6 +3,7 @@ package com.simiyu.usaidizihub;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         removeActionBar();
 
-        HorizontalScrollView horizontalScrollView = findViewById(R.id.horizontal_counselors_row);
-        horizontalScrollView.setHorizontalScrollBarEnabled(false);
+        //Add the row fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_row_placeholder,RowFragment.class,null)
+                .commit();
 
         BottomNavigationView buttonNavigationView = findViewById(R.id.bottom_nav);
         buttonNavigationView.setOnItemSelectedListener(item -> {
