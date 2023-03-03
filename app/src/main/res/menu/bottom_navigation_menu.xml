@@ -10,6 +10,6 @@
         android:title="@string/search" />
     <item
         android:id="@+id/menu_sessions"
-        android:icon="@drawable/baseline_supervised_user_circle"
-        android:title="@string/my_sessions" />
+        android:icon="@drawable/baseline_manage_accounts_24"
+        android:title="My Account" />
 </menu>
