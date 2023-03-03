@@ -3,8 +3,11 @@ package com.simiyu.usaidizihub;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -23,30 +26,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         removeActionBar();
+        addBottomNavBarActivity();
 
-        //Add the row fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_row_placeholder, RowFragment.class, null)
-                .commit();
-
-        BottomNavigationView buttonNavigationView = findViewById(R.id.bottom_nav);
-        buttonNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.menu_navigation_home:
-                case R.id.menu_search:
-                case R.id.menu_sessions:
-                    //do something here
-                    return true;
-            }
-            return false;
-        });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().
+                    beginTransaction()
+                    .replace(R.id.frame_layout_fs_placeholder, new MainFragment())
+                    .commit();
+        }
     }
 
+    // Remove the action bar
     void removeActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
         }
     }
+
+    //
+    void addBottomNavBarActivity() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_navigation_home:
+                    replaceNavFragment(MainFragment.class);
+                    return true;
+                case R.id.menu_search:
+                    replaceNavFragment(SearchFragment.class);
+                    return true;
+                case R.id.menu_sessions:
+                    replaceNavFragment(SessionFragment.class);
+                    return true;
+            }
+            return false;
+        });
+    }
+
+    public void replaceNavFragment(Class fragmentClass) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_layout_fs_placeholder, fragmentClass, null)
+                .commit();
+    }
 }
+
