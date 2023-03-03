@@ -10,37 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/linear_layout_home_salutation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome back,"
-                android:textSize="20sp" />
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/linear_layout_home_salutation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:paddingLeft="10dp"
-                android:text="Daniel"
-                android:textColor="@color/purple_700"
-                android:textSize="20sp" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome back,"
+                    android:textSize="20sp" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_below="@id/linear_layout_home_salutation"
-            android:layout_height="2dp"
-            />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="10dp"
+                    android:text="Daniel"
+                    android:textColor="@color/purple_700"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider_home"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/linear_layout_home_salutation" />
+
+            <FrameLayout
+                android:id="@+id/frame_layout_home_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_home"
+                android:layout_marginTop="5dp" />
         </RelativeLayout>
 
     </ScrollView>
