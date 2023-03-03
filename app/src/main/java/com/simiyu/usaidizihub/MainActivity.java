@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //
+    //bottom nav bar logic
     void addBottomNavBarActivity() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
     }
-
+    //replace bottom nav bar matching fragment
     public void replaceNavFragment(Class fragmentClass) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
