@@ -11,4 +11,6 @@
     <color name="yellow">#F2CD5C</color>
     <color name="purple">#A61F69</color>
     <color name="maroon">#400E32</color>
+    <color name="card_background">#EDEADE</color>
+    <color name="card_background1">#FAF9F6</color>
 </resources>
