@@ -26,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
 
         //When the user selects email and password
         //
+        emailAndPassword = findViewById(R.id.button_email_and_password);
         emailAndPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
