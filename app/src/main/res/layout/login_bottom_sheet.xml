@@ -7,13 +7,21 @@
     android:orientation="vertical"
     android:padding="8dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Reset your Password?"
-        android:textSize="20sp" />
+        android:text="Would you like to reset your Password?\n(Only available for registered users)"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/reset_email_address"
@@ -38,5 +46,6 @@
         android:text="Send me a code"
         android:textColor="@color/black"
         app:layout_constraintVertical_bias="0.2" />
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
