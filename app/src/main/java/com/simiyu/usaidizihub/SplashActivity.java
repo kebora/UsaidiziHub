@@ -51,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
             actionBar.hide();
         }
     }
-    // Add the typing effect for the Main Text
+    // Add the typing effect for the Razor Text
     private void animateText(final TextView textView, final String text) {
         final Handler handler = new Handler();
         final int delay = 75; //milliseconds
