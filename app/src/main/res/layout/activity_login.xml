@@ -84,7 +84,7 @@ tools:context=".LoginActivity">
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/button_help"
+            android:id="@+id/button_reset_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
