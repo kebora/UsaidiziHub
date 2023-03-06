@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Reset your Password?"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/reset_email_address"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_text_view"
+        android:hint="@string/prompt_email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="5dp"
+        android:selectAllOnFocus="true"
+        android:textColor="@color/purple_700" />
+
+    <Button
+        android:id="@+id/button_send_reset_code"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/rounded_button_view"
+        android:text="Send me a code"
+        android:textColor="@color/black"
+        app:layout_constraintVertical_bias="0.2" />
+
+</LinearLayout>
