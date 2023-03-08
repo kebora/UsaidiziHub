@@ -1,4 +1,4 @@
-package com.simiyu.usaidizihub;
+package com.simiyu.youhubpro;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FeedbackCardFragment extends Fragment {
+public class SearchFragment extends Fragment {
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feedback_card, container, false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
+        return view;
     }
 }

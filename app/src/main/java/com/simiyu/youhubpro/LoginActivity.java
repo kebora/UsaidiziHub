@@ -1,4 +1,4 @@
-package com.simiyu.usaidizihub;
+package com.simiyu.youhubpro;
 
 import android.os.Bundle;
 import android.view.View;

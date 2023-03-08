@@ -1,4 +1,4 @@
-package com.simiyu.usaidizihub;
+package com.simiyu.youhubpro;
 
 import android.os.Bundle;
 
@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SessionFragment extends Fragment {
-    View view;
+public class ProfileCardFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_session, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_profile_card, container, false);
     }
 }
