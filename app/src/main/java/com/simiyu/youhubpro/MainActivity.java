@@ -1,11 +1,12 @@
 package com.simiyu.youhubpro;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Retrieve the user details from Splash Activity
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("user_name");
+        String userEmail = intent.getStringExtra("user_email");
+
         removeActionBar();
         addBottomNavBarActivity();
 
