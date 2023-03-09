@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onSignIn(GoogleSignInAccount account) {
                 // Handle successful sign-in
-                Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 intent.putExtra("user_name", account.getDisplayName());
                 intent.putExtra("user_email", account.getEmail());
                 startActivity(intent);
