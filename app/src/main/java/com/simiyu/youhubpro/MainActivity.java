@@ -2,6 +2,7 @@ package com.simiyu.youhubpro;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +22,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String userName = intent.getStringExtra("user_name");
         String userEmail = intent.getStringExtra("user_email");
+
+        String[] nameParts = userName.split(" "); // split the name using the space character as the delimiter
+        String firstName = nameParts[0];
+
+        // Get the root view of the current activity
+        View rootView = findViewById(android.R.id.content);
+        // Create a Snackbar with a message and duration
+        Snackbar snackbar = Snackbar.make(rootView, firstName, Snackbar.LENGTH_SHORT);
+        // Show the Snackbar
+        snackbar.show();
 
         removeActionBar();
         addBottomNavBarActivity();
@@ -58,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
     }
+
     //replace bottom nav bar matching fragment
     public void replaceNavFragment(Class fragmentClass) {
         FragmentManager fragmentManager = getSupportFragmentManager();

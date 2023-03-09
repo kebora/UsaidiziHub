@@ -28,11 +28,12 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/textview_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:paddingLeft="10dp"
-                    android:text="Daniel"
+                    android:text=""
                     android:textColor="@color/purple_700"
                     android:textSize="20sp" />
 

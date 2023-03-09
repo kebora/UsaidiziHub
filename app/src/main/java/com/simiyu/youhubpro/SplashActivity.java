@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SplashActivity extends AppCompatActivity {
     private ImageView imageViewBackground;
@@ -37,11 +39,41 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onSignIn(GoogleSignInAccount account) {
                 // Handle successful sign-in
+                String userId = account.getId();
+                String userEmail = account.getEmail();
+                String userName = account.getDisplayName();
+
+                // Get a reference to the Firebase database
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
+
+                // Create a new user object with the user's information
+                User user = new User(userId, userName, userEmail);
+
+                // Write the user object to the database
+                databaseRef.child("users").child(userId).setValue(user);
+
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                intent.putExtra("user_name", account.getDisplayName());
-                intent.putExtra("user_email", account.getEmail());
-                startActivity(intent);
-                finish();
+
+                // Create a new instance of the fragment and set its arguments
+//                MainFragment homeFragment = new MainFragment();
+//                Bundle bundle = new Bundle();
+//                bundle.putString("user_name", userName);
+//                bundle.putString("user_email", userEmail);
+//                homeFragment.setArguments(bundle);
+
+                // Add a delay to ensure that the sign-in process is complete
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Add extras to the intent
+                        intent.putExtra("user_name", userName);
+                        intent.putExtra("user_email", userEmail);
+
+                        // Start the MainActivity
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 1000); // Delay for 1 second
             }
 
             @Override
