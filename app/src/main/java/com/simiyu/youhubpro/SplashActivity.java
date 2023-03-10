@@ -15,16 +15,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 
 public class SplashActivity extends AppCompatActivity {
     private ImageView imageViewBackground;
     private TextView textViewMainText;
     private Button emailAndPassword;
     private Button continueWithGoogleBtn;
-
-    private GoogleSignInHelper mGoogleSignInHelper;
+    private GoogleSignInClient mGoogleSignInClient;
+    private static final int RC_SIGN_IN = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,68 +38,11 @@ public class SplashActivity extends AppCompatActivity {
         textViewMainText = findViewById(R.id.textview_razor_studios);
         animateText(textViewMainText, "Razor Studios");
 
-        mGoogleSignInHelper = new GoogleSignInHelper(this, new GoogleSignInHelper.OnSignInListener() {
-            @Override
-            public void onSignIn(GoogleSignInAccount account) {
-                // Handle successful sign-in
-                String userId = account.getId();
-                String userEmail = account.getEmail();
-                String userName = account.getDisplayName();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
 
-                // Get a reference to the Firebase database
-                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference();
-
-                // Create a new user object with the user's information
-                User user = new User(userId, userName, userEmail);
-
-                // Write the user object to the database
-                databaseRef.child("users").child(userId).setValue(user);
-
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-
-                // Create a new instance of the fragment and set its arguments
-//                MainFragment homeFragment = new MainFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("user_name", userName);
-//                bundle.putString("user_email", userEmail);
-//                homeFragment.setArguments(bundle);
-
-                // Add a delay to ensure that the sign-in process is complete
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Add extras to the intent
-                        intent.putExtra("user_name", userName);
-                        intent.putExtra("user_email", userEmail);
-
-                        // Start the MainActivity
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 1000); // Delay for 1 second
-            }
-
-            @Override
-            public void onSignOut() {
-                // Handle sign-out
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                // Handle error
-            }
-        });
-
-        // Check if the user is already signed in
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null) {
-            // User is already signed in, move to HomeActivity
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            intent.putExtra("user_name", account.getDisplayName());
-            intent.putExtra("user_email", account.getEmail());
-            startActivity(intent);
-            finish();
-        }
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //When the user selects email and password
         //
@@ -114,7 +60,9 @@ public class SplashActivity extends AppCompatActivity {
         continueWithGoogleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mGoogleSignInHelper.signIn();
+                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(signInIntent, RC_SIGN_IN);
+
             }
         });
 
@@ -124,6 +72,41 @@ public class SplashActivity extends AppCompatActivity {
         myTextView.startAnimation(myAnimation);
 
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            // You can access the user's email address using account.getEmail() and other account information.
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            intent.putExtra("user_name", account.getDisplayName());
+            intent.putExtra("user_email", account.getEmail());
+            startActivity(intent);
+            finish();
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the sign-in attempt was not successful.
+            // You can display a message to the user indicating the error code and description using e.getStatusCode() and e.getMessage().
+            // Get the root view of the current activity
+            View rootView = findViewById(android.R.id.content);
+            // Create a Snackbar with a message and duration
+            Snackbar snackbar = Snackbar.make(rootView, e.toString(), Snackbar.LENGTH_SHORT);
+            // Show the Snackbar
+            snackbar.show();
+        }
+    }
+
 
     // Remove the action bar
     void removeActionBar() {
