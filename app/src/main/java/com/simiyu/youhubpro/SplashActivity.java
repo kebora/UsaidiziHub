@@ -38,6 +38,17 @@ public class SplashActivity extends AppCompatActivity {
         textViewMainText = findViewById(R.id.textview_razor_studios);
         animateText(textViewMainText, "Razor Studios");
 
+        // Check if the user is already signed in
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            // User is already signed in, move to HomeActivity
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            intent.putExtra("user_name", account.getDisplayName());
+            intent.putExtra("user_email", account.getEmail());
+            startActivity(intent);
+            finish();
+        }
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
